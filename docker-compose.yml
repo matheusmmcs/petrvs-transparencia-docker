@@ -17,7 +17,7 @@ services:
     networks:
       - app-network
     volumes:
-      - frontend-build:/app/dist
+      - ./transparencia/frontend/dist:/app/dist
     command: ["npm", "run", "build"]
     env_file:
       - ./transparencia/frontend/.env
@@ -31,7 +31,7 @@ services:
       - "${TRANSPARENCIA_FRONTEND_PORT}:80"
       #- "443:443"
     volumes:
-      - frontend-build:/usr/share/nginx/html
+      - ./transparencia/frontend/dist:/usr/share/nginx/html/transparencia
       - ./nginx/nginx-no-ssl.conf:/etc/nginx/nginx.conf
       #- ./nginx/nginx.conf:/etc/nginx/nginx.conf
       #- ./nginx/ssl:/etc/nginx/ssl  # Certificados SSL
@@ -43,7 +43,3 @@ services:
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  frontend-build:
-    driver: local  # Cria o volume nomeado para armazenar os arquivos de build

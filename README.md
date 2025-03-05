@@ -51,4 +51,10 @@ OBS: ao testar, abrir um navegador com CORS desabilitado. No MacOS pode-se utili
 open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 ```
 
+Caso ao atualizar a versão, esteja subindo a versão anterior, pode forçar o docker a ignorar as vesões cacheadas:
+
+```sh
+docker-compose pull && docker-compose up
+```
+
 A aplicação ficará disponível em **[http://0.0.0.0:3001](http://0.0.0.0:3001)** ou, caso a porta do front seja alterada, na porta informada no .env! 🚀
